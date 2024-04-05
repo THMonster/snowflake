@@ -1,0 +1,11 @@
+--- a/drivers/gpio/Kconfig
++++ b/drivers/gpio/Kconfig
+@@ -59,7 +59,7 @@ config DEBUG_GPIO
+ 	  that are most common when setting up new platforms or boards.
+ 
+ config GPIO_SYSFS
+-	bool "/sys/class/gpio/... (sysfs interface)" if EXPERT
++	bool "/sys/class/gpio/... (sysfs interface)"
+ 	depends on SYSFS
+ 	select GPIO_CDEV # We need to encourage the new ABI
+ 	help
