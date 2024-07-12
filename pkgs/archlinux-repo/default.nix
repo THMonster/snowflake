@@ -1,4 +1,4 @@
-{ pkgs, lib, stdenv, naersk }:
+{ pkgs, lib, stdenv, inputs }:
 let
   inherit (stdenv.hostPlatform) system;
 
@@ -8,7 +8,7 @@ let
   }.${system};
 in
 with pkgs;
-naersk.buildPackage rec {
+inputs.naersk.buildPackage rec {
   pname = "archlinux-repo";
   version = "0.4.0";
   src = fetchTree {
