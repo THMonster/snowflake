@@ -9,7 +9,8 @@ let
 in
 with pkgs;
 stdenv.mkDerivation rec {
-  name = "tpconenatd-1.0.0";
+  pname = "tpconenatd";
+  version = "1.0.0";
   src = fetchTree {
     shallow = true;
 	type = "git";
