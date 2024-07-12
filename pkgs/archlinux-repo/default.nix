@@ -1,4 +1,4 @@
-{ pkgs, lib, stdenv, inputs }:
+{ pkgs, lib, stdenv, rustPlatform }:
 let
   inherit (stdenv.hostPlatform) system;
 
@@ -8,7 +8,7 @@ let
   }.${system};
 in
 with pkgs;
-inputs.naersk.buildPackage rec {
+rustPlatform.buildRustPackage rec {
   pname = "archlinux-repo";
   version = "0.4.0";
   src = fetchTree {
@@ -31,9 +31,9 @@ inputs.naersk.buildPackage rec {
   '';
   # postInstall = ''
    # '';
-  # meta = {
-  #   homepage = "https://a.com/";
-  #   description = "aaa";
-  #   license = with lib.licenses; [ mit ];
-  # };
+  meta = {
+    homepage = "https://a.com/";
+    description = "aaa";
+    license = with lib.licenses; [ mit ];
+  };
 }

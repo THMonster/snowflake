@@ -42,7 +42,7 @@
       linuxPackages_r5c_6_8 = pkgs.linuxPackagesFor linux_6_8_r5c;
       linuxPackages_r5c_6_6 = pkgs.linuxPackagesFor linux_6_6_r5c;
       tpconenatd = pkgs.callPackage ./pkgs/tpconenatd { };
-      archlinux-repo = pkgs.callPackage ./pkgs/archlinux-repo { inherit inputs };
+      archlinux-repo = pkgs.callPackage ./pkgs/archlinux-repo { };
     };
   });
    
