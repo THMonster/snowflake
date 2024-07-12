@@ -12,6 +12,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
     nur.url = "github:nix-community/NUR";
     utils.url = "github:numtide/flake-utils";
+    naersk.url = "github:nix-community/naersk";
   };
 
 
@@ -41,7 +42,7 @@
       linuxPackages_r5c_6_8 = pkgs.linuxPackagesFor linux_6_8_r5c;
       linuxPackages_r5c_6_6 = pkgs.linuxPackagesFor linux_6_6_r5c;
       tpconenatd = pkgs.callPackage ./pkgs/tpconenatd { };
-      archlinux-repo = pkgs.callPackage ./pkgs/archlinux-repo { };
+      archlinux-repo = pkgs.callPackage ./pkgs/archlinux-repo { inputs.naersk };
     };
   });
    

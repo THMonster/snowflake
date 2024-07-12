@@ -1,4 +1,4 @@
-{ pkgs, lib, stdenv, rustPlatform }:
+{ pkgs, lib, stdenv, naersk }:
 let
   inherit (stdenv.hostPlatform) system;
 
@@ -8,7 +8,7 @@ let
   }.${system};
 in
 with pkgs;
-rustPlatform.buildRustPackage rec {
+naersk.buildPackage rec {
   pname = "archlinux-repo";
   version = "0.4.0";
   src = fetchTree {
@@ -18,9 +18,9 @@ rustPlatform.buildRustPackage rec {
     ref = "main";
     rev = "2d6a6a4c4a8f5b1075df28c65db7a64616c91a94";
   };
-  cargoLock = {
-    lockFile = ./Cargo.lock;
-  };
+  # cargoLock = {
+  #   lockFile = ./Cargo.lock;
+  # };
   nativeBuildInputs = [
     makeWrapper
   ];
@@ -31,9 +31,9 @@ rustPlatform.buildRustPackage rec {
   '';
   # postInstall = ''
    # '';
-  meta = {
-    homepage = "https://a.com/";
-    description = "aaa";
-    license = with lib.licenses; [ mit ];
-  };
+  # meta = {
+  #   homepage = "https://a.com/";
+  #   description = "aaa";
+  #   license = with lib.licenses; [ mit ];
+  # };
 }
