@@ -12,7 +12,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
     nur.url = "github:nix-community/NUR";
     utils.url = "github:numtide/flake-utils";
-    naersk.url = "github:nix-community/naersk";
+    # naersk.url = "github:nix-community/naersk";
   };
 
 
