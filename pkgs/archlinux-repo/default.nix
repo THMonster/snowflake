@@ -18,9 +18,9 @@ rustPlatform.buildRustPackage rec {
     ref = "main";
     rev = "2d6a6a4c4a8f5b1075df28c65db7a64616c91a94";
   };
-  # cargoLock = {
-  #   lockFile = ./Cargo.lock;
-  # };
+  cargoLock = {
+    lockFile = ./Cargo.lock;
+  };
   nativeBuildInputs = [
     makeWrapper
   ];
