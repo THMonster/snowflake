@@ -10,13 +10,13 @@ in
 with pkgs;
 stdenv.mkDerivation rec {
   pname = "tpconenatd";
-  version = "1.0.0";
+  version = "1.0.1";
   src = fetchTree {
     shallow = true;
 	type = "git";
-    url = "https://github.com/claw6148/TPConeNATd";
+    url = "https://github.com/THMonster/TPConeNATd";
     ref = "master";
-    rev = "999a02391605629943361120f15183c363f31b71";
+    rev = "12450a0292c8f19e7adebb86fbf013ba75b6f5d9";
   };
   nativeBuildInputs = [
     cmake
