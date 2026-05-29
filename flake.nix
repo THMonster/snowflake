@@ -28,18 +28,18 @@
 		let
 			pkgs = nixpkgs.legacyPackages.${system};
 			# linux_6_1_r5c = pkgs.callPackage ./pkgs/linux-r5c { };
-			linux_6_8_r5c = pkgs.callPackage ./pkgs/linux-r5c-6-8 { };
-			linux_6_6_r5c = pkgs.callPackage ./pkgs/linux-r5c-6-6 { };
+			# linux_6_8_r5c = pkgs.callPackage ./pkgs/linux-r5c-6-8 { };
+			# linux_6_6_r5c = pkgs.callPackage ./pkgs/linux-r5c-6-6 { };
 		in {
 			legacyPackages = {
 			};
 			packages = {
 				# inherit linux_6_1_r5c;
-				inherit linux_6_8_r5c;
-				inherit linux_6_6_r5c;
+				# inherit linux_6_8_r5c;
+				# inherit linux_6_6_r5c;
+				# linuxPackages_r5c_6_8 = pkgs.linuxPackagesFor linux_6_8_r5c;
+				# linuxPackages_r5c_6_6 = pkgs.linuxPackagesFor linux_6_6_r5c;
 				linuxPackages_r5c = import ./pkgs/linux-r5c { inherit pkgs; };
-				linuxPackages_r5c_6_8 = pkgs.linuxPackagesFor linux_6_8_r5c;
-				linuxPackages_r5c_6_6 = pkgs.linuxPackagesFor linux_6_6_r5c;
 				tpconenatd = pkgs.callPackage ./pkgs/tpconenatd { };
 				archlinux-repo = pkgs.callPackage ./pkgs/archlinux-repo { };
 			};
