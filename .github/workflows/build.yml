@@ -1,0 +1,66 @@
+name: "Build packages"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '30 18 * * 5'
+
+jobs:
+  build_aarch64:
+    runs-on: ubuntu-24.04-arm
+    permissions:
+      packages: write
+    env:
+      NIXPKGS_ALLOW_UNFREE: 1
+      NIXPKGS_ALLOW_UNBROKEN: 1
+    services:
+      oranc:
+        image: ghcr.io/linyinfeng/oranc
+
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v4
+
+    - name: install nix
+      uses: cachix/install-nix-action@v31
+
+    - uses: linyinfeng/oranc-action@v1
+      with:
+        # pass oranc container id to the action
+        orancServerContainer: '${{ job.services.oranc.id }}'
+        # use `nix key generate-secret` to generate a signing key
+        # keep it safe!
+        signingKey: ${{ secrets.NIX_SIGNING_KEY }}
+    # build anything with cache
+    - run: |
+        nix build .#tpconenatd
+        nix build .#linuxPackages_r5c.kernel
+
+  build_amd64:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    env:
+      NIXPKGS_ALLOW_UNFREE: 1
+      NIXPKGS_ALLOW_UNBROKEN: 1
+    services:
+      oranc:
+        image: ghcr.io/linyinfeng/oranc
+
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v4
+
+    - name: install nix
+      uses: cachix/install-nix-action@v31
+
+    - uses: linyinfeng/oranc-action@v1
+      with:
+        # pass oranc container id to the action
+        orancServerContainer: '${{ job.services.oranc.id }}'
+        # use `nix key generate-secret` to generate a signing key
+        # keep it safe!
+        signingKey: ${{ secrets.NIX_SIGNING_KEY }}
+    # build anything with cache
+    - run: |
+        nix build .#archlinux-repo
