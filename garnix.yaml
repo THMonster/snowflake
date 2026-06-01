@@ -1,9 +1,0 @@
-builds:
-  exclude: []
-  include:
-    # - 'packages.aarch64-linux.linuxPackages_r5c.kernel'
-    # - 'packages.x86_64-linux.tpconenatd'
-    # - 'packages.aarch64-linux.tpconenatd'
-    # - 'packages.x86_64-linux.archlinux-repo'
-    # - 'packages.aarch64-linux.archlinux-repo'
-    # - 'packages.aarch64-linux.linux_6_6_r5c'
