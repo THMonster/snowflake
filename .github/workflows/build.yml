@@ -21,6 +21,12 @@ jobs:
     - name: checkout repository
       uses: actions/checkout@v4
 
+    - name: Free disk space
+      run: |
+        df -h
+        sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android $AGENT_TOOLSDIRECTORY
+        df -h
+
     - name: install nix
       uses: cachix/install-nix-action@v31
 
@@ -50,6 +56,12 @@ jobs:
     steps:
     - name: checkout repository
       uses: actions/checkout@v4
+
+    - name: Free disk space
+      run: |
+        df -h
+        sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android $AGENT_TOOLSDIRECTORY
+        df -h
 
     - name: install nix
       uses: cachix/install-nix-action@v31
